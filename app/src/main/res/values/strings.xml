@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DiceRoller</string>
+    <string name="roll">Бросить кубик!</string>
+    <string name="kotlin">Kotlin!</string>
+</resources>
