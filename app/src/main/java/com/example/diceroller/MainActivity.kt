@@ -69,6 +69,7 @@ fun DiceRollerApp() {
     )
 
 }
+
 @OptIn(ExperimentalTextApi::class)
 @Composable
 fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
@@ -118,7 +119,7 @@ fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
                 fontSize = 25.sp,
                 color = Color(0xFFDDA0DD),
                 style = TextStyle(
-                    brush = Brush.linearGradient(colors = listOf(Cyan, Red, Purple80,))
+                    brush = Brush.linearGradient(colors = listOf(Cyan, Red, Purple80))
                 ),
                 fontWeight = FontWeight.ExtraBold
 
