@@ -29,22 +29,31 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Blue
+import androidx.compose.ui.graphics.Color.Companion.Cyan
+import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.ExperimentalTextApi
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.diceroller.ui.theme.DiceRollerTheme
+import com.example.diceroller.ui.theme.Pink80
+import com.example.diceroller.ui.theme.Purple80
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             DiceRollerTheme {
-
+                DiceRollerApp()
             }
         }
     }
@@ -60,7 +69,7 @@ fun DiceRollerApp() {
     )
 
 }
-
+@OptIn(ExperimentalTextApi::class)
 @Composable
 fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
 
@@ -76,33 +85,44 @@ fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
         else -> R.drawable.dice_6
     }
     Column(
-        modifier = Modifier.background(Color(0xFFC3FBD8)),
+        modifier = Modifier
+            .background(Color(0xFFC3FBD8))
+            .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
 
         ) {
+        Spacer(modifier = Modifier.height(100.dp))
+
         Image(
-            painter = painterResource(R.drawable.dice_1),
+            painter = painterResource(resourceImage),
             contentDescription = result.toString()
         )
 
-        Spacer(modifier = Modifier.height(100.dp))
+        Spacer(modifier = Modifier.height(200.dp))
 
         ElevatedButton(
             onClick = { result = (1..6).random() },
             modifier = Modifier
-                .height(36.dp)
-                .width(150.dp),
+                .height(65.dp)
+                .width(270.dp)
+                .shadow(
+                    elevation = 25.dp,
+                    shape = CircleShape,
+                ),
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color(0xFFFFFACD)
             )
         ) {
             Text(
                 text = stringResource(R.string.roll),
-                fontSize = 12.sp,
-                color = Color(0xFFDDA0DD)
+                fontSize = 25.sp,
+                color = Color(0xFFDDA0DD),
+                style = TextStyle(
+                    brush = Brush.linearGradient(colors = listOf(Cyan, Red, Purple80,))
+                ),
+                fontWeight = FontWeight.ExtraBold
+
             )
         }
-
-        Spacer(modifier = Modifier.height(60.dp))
     }
 }
