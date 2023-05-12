@@ -122,7 +122,6 @@ fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
                     brush = Brush.linearGradient(colors = listOf(Cyan, Red, Purple80))
                 ),
                 fontWeight = FontWeight.ExtraBold
-
             )
         }
     }
